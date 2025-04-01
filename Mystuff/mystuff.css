@@ -46,12 +46,12 @@
     color: #009402;
 }
 
-.share {
+.share, .learn {
     color: #000;
     transition: 300ms;
 }
 
-.share:hover {
+.share:hover, .learn:hover {
     color: #009402;
 }
 
@@ -79,11 +79,6 @@
     display: flex;
     position:absolute;
     left: 30px;
-}
-
-.learn {
-    margin-left: 0;
-    color: rgb(0, 148, 2);
 }
 
 .main {
@@ -140,12 +135,16 @@
     opacity: 1;
 }
 
-.logout, .mystuff, .myaccount {
+.logout, .myaccount {
     color:#000;
     transition: 300ms;
 }
 
-.logout:hover, .mystuff:hover, .myaccount:hover {
+.mystuff {
+    color:#009402
+}
+
+.logout:hover, .myaccount:hover {
     color: #009402;
 }
 

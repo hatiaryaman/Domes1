@@ -2,7 +2,6 @@ const mainNav = document.getElementsByClassName('main')[0]
 const signUpNav = document.getElementsByClassName('signup')[0]
 const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
-const stuffNav = document.getElementsByClassName('mystuff')[0]
 const accountNav = document.getElementsByClassName('myaccount')[0]
 const logoutNav = document.getElementsByClassName('logout')[0]
 
@@ -53,7 +52,7 @@ if (userName != null) {
 const list = document.getElementsByClassName('list')[0]
 
 class ListElem {
-    constructor(title, chars, eqs, imgs) {
+    constructor(title, chars, eqs, imgs, color='#000') {
         this.title = title;
         this.chars = chars;
         this.eqs = eqs;
@@ -64,6 +63,7 @@ class ListElem {
 
         const container1 = document.createElement('div')
         container1.setAttribute('class', 'div-block-6')
+        container1.style.borderColor = color
 
         const container2 = document.createElement('div')
         container2.setAttribute('class', 'div-block-9')
@@ -71,9 +71,11 @@ class ListElem {
         const text1 = document.createElement('div')
         text1.setAttribute('class', 'text-block-13')
         text1.innerHTML = this.title
+        text1.style.color = color
 
         const container3 = document.createElement('div')
         container3.setAttribute('class', 'div-block-8')
+        container3.style.borderColor = color
 
         const container4 = document.createElement('div')
         container4.setAttribute('class', 'div-block-7')
@@ -81,14 +83,17 @@ class ListElem {
         const charactersInfo = document.createElement('div')
         charactersInfo.setAttribute('class', 'characters')
         charactersInfo.innerHTML = 'Characters - ' + this.chars
+        charactersInfo.style.color = color
 
         const equationsInfo = document.createElement('div')
         equationsInfo.setAttribute('class', 'equations')
         equationsInfo.innerHTML = 'Equations - ' + this.eqs
+        equationsInfo.style.color = color
 
         const imagesInfo = document.createElement('div')
         imagesInfo.setAttribute('class', 'images')
         imagesInfo.innerHTML = 'Images - ' + this.imgs
+        imagesInfo.style.color = color
 
         container2.appendChild(text1)
         container4.appendChild(charactersInfo)
@@ -134,7 +139,13 @@ getDocs(lessons).then((snapShot) => {
         let data = doc.data()
 
         if (data['userName'] == localStorage.getItem('Username')) {
-            new ListElem(data['Title'], data['Characters'], data['Equations'], data['Images'])
+            let color = ''
+            if (data['published']) {
+                color = '#000'
+            } else {
+                color = '#d16704'
+            }
+            new ListElem(data['Title'], data['Characters'], data['Equations'], data['Images'], color)
         }
     })
 })

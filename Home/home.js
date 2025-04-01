@@ -2,6 +2,7 @@ const learnNav = document.getElementsByClassName('learn')[0]
 const signUpNav = document.getElementsByClassName('signup')[0]
 const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
+const stuffNav = document.getElementsByClassName('mystuff')[0]
 const accountNav = document.getElementsByClassName('myaccount')[0]
 const logoutNav = document.getElementsByClassName('logout')[0]
 const learnButton = document.getElementsByClassName('label')[0]
@@ -27,6 +28,10 @@ shareButton.addEventListener('click', function() {
     if (userName == null) {
         window.location.href = '../Login/login.html'
     }
+})
+
+stuffNav.addEventListener('click', function() {
+    window.location.href = '../Mystuff/mystuff.html'
 })
 
 accountNav.addEventListener('click', function() {

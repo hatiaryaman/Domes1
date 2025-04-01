@@ -18,11 +18,6 @@ loginNav.addEventListener('click', function() {
     window.location.href = '../Login/login.html'
 })
 
-stuffNav.addEventListener('click', function() {
-    window.location.href = '../Mystuff/mystuff.html'
-})
-
-
 accountNav.addEventListener('click', function() {
     window.location.href = '../Account/account.html'
 })
@@ -138,7 +133,7 @@ getDocs(lessons).then((snapShot) => {
     snapShot.docs.forEach((doc) => {
         let data = doc.data()
 
-        if (data['published']) {
+        if (data['userName'] == localStorage.getItem('Username')) {
             new ListElem(data['Title'], data['Characters'], data['Equations'], data['Images'])
         }
     })

@@ -1,5 +1,6 @@
 const mainNav = document.getElementsByClassName('main')[0]
 const learnNav = document.getElementsByClassName('learn')[0]
+const stuffNav = document.getElementsByClassName('mystuff')[0]
 const userNav = document.getElementsByClassName('user')[0]
 const userNameTag = document.getElementsByClassName('userName')[0]
 const logoutNav = document.getElementsByClassName('logout')[0]
@@ -10,6 +11,10 @@ mainNav.addEventListener('click', function() {
 
 learnNav.addEventListener('click', function() {
     window.location.href = '../Learn/learn.html'
+})
+
+stuffNav.addEventListener('click', function() {
+    window.location.href = '../Mystuff/mystuff.html'
 })
 
 logoutNav.addEventListener('click', function() {

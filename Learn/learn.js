@@ -136,6 +136,8 @@ getDocs(lessons).then((snapShot) => {
     snapShot.docs.forEach((doc) => {
         let data = doc.data()
 
-        new ListElem(data['Title'], data['Characters'], data['Equations'], data['Images'])
+        if (data['published']) {
+            new ListElem(data['Title'], data['Characters'], data['Equations'], data['Images'])
+        }
     })
 })

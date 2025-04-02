@@ -300,6 +300,32 @@
     border: 6px solid rgba(0, 255, 4, 0.2);
 }
 
+.containerImg {
+    
+}
+
+.trash {
+    width: 40px;
+    aspect-ratio: 1/1;
+    border: 6px solid rgba(255,255,255,0);
+    transition: 300ms
+}
+
+.trash:hover {
+    border:6px solid rgba(0, 255, 4, 0.2);
+}
+
+.upload {
+    width: 40px;
+    aspect-ratio: 1/1;
+    border: 6px solid rgba(255,255,255,0);
+    transition: 300ms
+}
+
+.upload:hover {
+    border:6px solid rgba(0, 255, 4, 0.2);
+}
+
 .text-block-13 {
     display: flex;
     flex-direction: row;

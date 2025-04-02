@@ -1,4 +1,5 @@
 const mainNav = document.getElementsByClassName('main')[0]
+const learnNav = document.getElementsByClassName('learn')[0]
 const signUpNav = document.getElementsByClassName('signup')[0]
 const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
@@ -7,6 +8,10 @@ const logoutNav = document.getElementsByClassName('logout')[0]
 
 mainNav.addEventListener('click', function() {
     window.location.href = '../Home/home.html'
+})
+
+learnNav.addEventListener('click', function() {
+    window.location.href = '../Learn/learn.html'
 })
 
 signUpNav.addEventListener('click', function() {
@@ -65,6 +70,18 @@ class ListElem {
         container1.setAttribute('class', 'div-block-6')
         container1.style.borderColor = color
 
+        const containerImg = document.createElement('div')
+        containerImg.setAttribute('class', 'containerImg')
+
+        const trashImg = document.createElement('img')
+        trashImg.setAttribute('class', 'trash')
+        trashImg.src = './trash.png'
+        trashImg.addEventListener('click', removeProject(title))
+
+        const uploadImg = document.createElement('img')
+        uploadImg.setAttribute('class', 'upload')
+        uploadImg.src = './upload.png'
+
         const container2 = document.createElement('div')
         container2.setAttribute('class', 'div-block-9')
 
@@ -99,6 +116,9 @@ class ListElem {
         container4.appendChild(charactersInfo)
         container4.appendChild(equationsInfo)
         container4.appendChild(imagesInfo)
+        container1.appendChild(containerImg)
+        containerImg.appendChild(trashImg)
+        containerImg.appendChild(uploadImg)
         container1.appendChild(container2)
         container1.appendChild(container3)
         container1.appendChild(container4)
@@ -149,3 +169,10 @@ getDocs(lessons).then((snapShot) => {
         }
     })
 })
+
+
+async function removeProject(title) {
+    let userId = localStorage.getItem('UserId')
+    let docSnap = doc(db, 'Lessons', title)
+
+}

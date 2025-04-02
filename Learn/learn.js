@@ -1,4 +1,5 @@
 const mainNav = document.getElementsByClassName('main')[0]
+const shareNav = document.getElementsByClassName('share')[0]
 const signUpNav = document.getElementsByClassName('signup')[0]
 const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
@@ -8,6 +9,12 @@ const logoutNav = document.getElementsByClassName('logout')[0]
 
 mainNav.addEventListener('click', function() {
     window.location.href = '../Home/home.html'
+})
+
+shareNav.addEventListener('click', function() {
+    if (userName == null) {
+        window.location.href = '../Login/login.html'
+    }
 })
 
 signUpNav.addEventListener('click', function() {
@@ -21,7 +28,6 @@ loginNav.addEventListener('click', function() {
 stuffNav.addEventListener('click', function() {
     window.location.href = '../Mystuff/mystuff.html'
 })
-
 
 accountNav.addEventListener('click', function() {
     window.location.href = '../Account/account.html'

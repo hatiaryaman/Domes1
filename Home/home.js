@@ -1,4 +1,5 @@
 const learnNav = document.getElementsByClassName('learn')[0]
+const shareNav = document.getElementsByClassName('share')[0]
 const signUpNav = document.getElementsByClassName('signup')[0]
 const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
@@ -10,6 +11,12 @@ const shareButton = document.getElementsByClassName('label')[1]
 
 learnNav.addEventListener('click', function() {
     window.location.href = '../Learn/learn.html'
+})
+
+shareNav.addEventListener('click', function() {
+    if (userName == null) {
+        window.location.href = '../Login/login.html'
+    }
 })
 
 signUpNav.addEventListener('click', function() {

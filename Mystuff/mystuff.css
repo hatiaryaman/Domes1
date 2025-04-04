@@ -1,3 +1,9 @@
+.tooltip {
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
 .background {
     position: absolute;
     z-index: -1;
@@ -319,7 +325,7 @@
     width: 40px;
     aspect-ratio: 1/1;
     border: 6px solid rgba(255,255,255,0);
-    transition: 300ms
+    transition: 300ms;
 }
 
 .upload:hover {

@@ -1,3 +1,16 @@
+// Budget debug
+const debugDisp = document.getElementsByClassName('test')[0]
+debugDisp.innerHTML = "none"
+
+const tooltip = document.getElementsByClassName('tooltip')[0]
+
+function placeAtMouse(x, y) {
+    tooltip.style.left = x;
+    tooltip.style.top = y;
+
+    requestAnimationFrame(() => placeAtMouse(x, y));
+}
+
 const mainNav = document.getElementsByClassName('main')[0]
 const learnNav = document.getElementsByClassName('learn')[0]
 const signUpNav = document.getElementsByClassName('signup')[0]
@@ -5,6 +18,7 @@ const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
 const accountNav = document.getElementsByClassName('myaccount')[0]
 const logoutNav = document.getElementsByClassName('logout')[0]
+let silence = true
 
 mainNav.addEventListener('click', function() {
     window.location.href = '../Home/home.html'
@@ -76,11 +90,24 @@ class ListElem {
         const trashImg = document.createElement('img')
         trashImg.setAttribute('class', 'trash')
         trashImg.src = './trash.png'
-        trashImg.addEventListener('click', removeProject(title))
+        trashImg.addEventListener('click', () => {removeProject(title)})
+        trashImg.addEventListener('mouseenter', () => {tooltip.innerHTML = 'Yo'})
+
+        trashImg.addEventListener('mouseover', (event) => {
+            placeAtMouse(event.clientX, event.clientY);
+        })
+
+        trashImg.addEventListener('mouseleave', () => {tooltip.innerHTML = ''})
 
         const uploadImg = document.createElement('img')
         uploadImg.setAttribute('class', 'upload')
         uploadImg.src = './upload.png'
+        if (color == '#000') {
+            uploadImg.style.transform = 'rotate(180deg)'
+            uploadImg.addEventListener('click', () => {returnProject(title)})
+        } else {
+            uploadImg.addEventListener('click', () => {uploadProject(title)})
+        }
 
         const container2 = document.createElement('div')
         container2.setAttribute('class', 'div-block-9')
@@ -130,7 +157,7 @@ class ListElem {
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-import { getFirestore, collection, getDocs, doc, setDoc} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -153,6 +180,7 @@ const db = getFirestore();
 
 // Setup
 const lessons = collection(db, 'Lessons')
+var titleToId = {}
 
 getDocs(lessons).then((snapShot) => {
     snapShot.docs.forEach((doc) => {
@@ -166,13 +194,39 @@ getDocs(lessons).then((snapShot) => {
                 color = '#d16704'
             }
             new ListElem(data['Title'], data['Characters'], data['Equations'], data['Images'], color)
+
+            titleToId[data['Title']] = doc.id
         }
     })
+
+    silence = false
 })
 
 
 async function removeProject(title) {
-    let userId = localStorage.getItem('UserId')
-    let docSnap = doc(db, 'Lessons', title)
+    if (!silence) {
+        await deleteDoc(doc(db, 'Lessons', titleToId[title]))
 
+        window.location.href = './mystuff.html'
+    }
+}
+
+async function uploadProject(title) {
+    if (!silence) {
+        await updateDoc(doc(db, 'Lessons', titleToId[title]), {
+            'published': true
+        })
+    }
+
+    window.location.href = './mystuff.html'
+}
+
+async function returnProject(title) {
+    if (!silence) {
+        await updateDoc(doc(db, 'Lessons', titleToId[title]), {
+            'published': false
+        })
+    }
+
+    window.location.href = './mystuff.html'
 }

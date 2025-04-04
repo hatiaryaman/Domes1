@@ -81,11 +81,6 @@ updateButton.addEventListener('click', async (event) => {
     let password = document.getElementById('password').value
     let cPassword = document.getElementById('c-password').value
 
-    if (oPassword != docSnap.data()['password']) {
-        status('Please enter current password', '#ff0000')
-        return
-    }
-
     let permit = (cPassword == password)
 
     if (permit) {
@@ -93,8 +88,7 @@ updateButton.addEventListener('click', async (event) => {
 
         await setDoc(doc(db, 'Users', userId), {
             'userName': userName,
-            'email': email,
-            'password': newPassword
+            'email': email
         })
 
         const auth = getAuth()
@@ -125,6 +119,10 @@ updateButton.addEventListener('click', async (event) => {
 
                 status('An error has occured.', '#ff0000')
             })
+        })
+        .catch((error) => {
+            console.log(error)
+            status('User information is incorrect.', '#ff0000')
         })
     }
 })

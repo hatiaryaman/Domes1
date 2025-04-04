@@ -99,8 +99,7 @@ function registerUser(userName, email, password) {
         const user = userCredential.user
         const userData = {
             userName: userName,
-            email: email,
-            password: password
+            email: email
         }
         const docRef = doc(db, 'Users', user.uid)
         setDoc(docRef, userData)

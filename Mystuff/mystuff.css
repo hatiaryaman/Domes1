@@ -2,6 +2,12 @@
     position: absolute;
     width: auto;
     height: auto;
+    cursor:none;
+    border: 1px solid #000;
+    transition: 300ms;
+    opacity: 0;
+    padding: 5px;
+    background-color: white;
 }
 
 .background {

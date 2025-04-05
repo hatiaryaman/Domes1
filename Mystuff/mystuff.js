@@ -3,13 +3,10 @@ const debugDisp = document.getElementsByClassName('test')[0]
 debugDisp.innerHTML = "none"
 
 const tooltip = document.getElementsByClassName('tooltip')[0]
-
-function placeAtMouse(x, y) {
-    tooltip.style.left = x;
-    tooltip.style.top = y;
-
-    requestAnimationFrame(() => placeAtMouse(x, y));
-}
+document.addEventListener('mousemove', (event) => {
+    tooltip.style.left = `calc(${event.clientX}px + 20px)`
+    tooltip.style.top = event.clientY
+})
 
 const mainNav = document.getElementsByClassName('main')[0]
 const learnNav = document.getElementsByClassName('learn')[0]
@@ -91,13 +88,18 @@ class ListElem {
         trashImg.setAttribute('class', 'trash')
         trashImg.src = './trash.png'
         trashImg.addEventListener('click', () => {removeProject(title)})
-        trashImg.addEventListener('mouseenter', () => {tooltip.innerHTML = 'Yo'})
-
-        trashImg.addEventListener('mouseover', (event) => {
-            placeAtMouse(event.clientX, event.clientY);
+        trashImg.addEventListener('mouseenter', () => {
+            tooltip.innerHTML = 'Delete'
+            setTimeout(()=>{
+                tooltip.style.opacity = 1
+            },300)
         })
-
-        trashImg.addEventListener('mouseleave', () => {tooltip.innerHTML = ''})
+        trashImg.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = 0
+            setTimeout(()=>{
+                tooltip.innerHTML = ''
+            },300)
+        })
 
         const uploadImg = document.createElement('img')
         uploadImg.setAttribute('class', 'upload')
@@ -108,6 +110,18 @@ class ListElem {
         } else {
             uploadImg.addEventListener('click', () => {uploadProject(title)})
         }
+        uploadImg.addEventListener('mouseenter', () => {
+            tooltip.innerHTML = 'Upload'
+            setTimeout(()=>{
+                tooltip.style.opacity = 1
+            },300)
+        })
+        uploadImg.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = 0
+            setTimeout(()=>{
+                tooltip.innerHTML = ''
+            },300)
+        })
 
         const container2 = document.createElement('div')
         container2.setAttribute('class', 'div-block-9')

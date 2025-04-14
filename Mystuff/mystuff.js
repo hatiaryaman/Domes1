@@ -1,7 +1,3 @@
-// Budget debug
-const debugDisp = document.getElementsByClassName('test')[0]
-debugDisp.innerHTML = "none"
-
 const tooltip = document.getElementsByClassName('tooltip')[0]
 document.addEventListener('mousemove', (event) => {
     tooltip.style.left = `calc(${event.clientX}px + 20px)`

@@ -75,6 +75,10 @@ class ListElem {
 
         const container1 = document.createElement('div')
         container1.setAttribute('class', 'div-block-6')
+        container1.addEventListener('click', function() {
+            window.location.href = '../Lesson/lesson.html'
+            localStorage.setItem('title', title)
+        })
 
         const container2 = document.createElement('div')
         container2.setAttribute('class', 'div-block-9')

@@ -11,6 +11,7 @@ const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
 const accountNav = document.getElementsByClassName('myaccount')[0]
 const logoutNav = document.getElementsByClassName('logout')[0]
+const addButton = document.getElementsByClassName('add')[0]
 let silence = true
 
 mainNav.addEventListener('click', function() {
@@ -240,3 +241,10 @@ async function returnProject(title) {
 
     window.location.href = './mystuff.html'
 }
+
+const backFade = document.getElementsByClassName('back-fade')[0]
+
+addButton.addEventListener('click', function() {
+    backFade.style.opacity = 0.4
+    backFade.style.visibility = 'visible'
+})

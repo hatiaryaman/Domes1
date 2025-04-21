@@ -27,6 +27,7 @@
 
 .body {
     font-family: Montserrat;
+    overflow: hidden;
 }
 
 .top {
@@ -379,3 +380,39 @@
     text-align: center;
 }
 
+.add {
+    border:solid 1px #000;
+    position:absolute;
+    bottom: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    transition: 300ms;
+}
+
+.add:hover {
+    border: solid 1px #009402
+}
+
+.add-image {
+    width: 40px;
+    height: 40px
+}
+
+.back-fade {
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+    background-color: rgb(131, 131, 131);
+    opacity: 0;
+    visibility: hidden;
+    transition: 300ms;
+}
+
+.back-fade:hover {
+    visibility: visible;
+    opacity: 0.4;
+}

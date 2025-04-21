@@ -5,6 +5,8 @@ const loginNav = document.getElementsByClassName('login')[0]
 const userNav = document.getElementsByClassName('userName')[0]
 const learnNav = document.getElementsByClassName('learn')[0]
 const shareNav = document.getElementsByClassName('share')[0]
+const stuffNav = document.getElementsByClassName('mystuff')[0]
+const accountNav = document.getElementsByClassName('myaccount')[0]
 
 mainNav.addEventListener('click', function() {
     window.location.href = '../Home/home.html'
@@ -18,6 +20,14 @@ shareNav.addEventListener('click', function() {
     if (userName == null) {
         window.location.href = '../Login/login.html'
     }
+})
+
+stuffNav.addEventListener('click', function() {
+    window.location.href = '../Mystuff/mystuff.html'
+})
+
+accountNav.addEventListener('click', function() {
+    window.location.href = '../Account/account.html'
 })
 
 logoutNav.addEventListener('click', function() {
